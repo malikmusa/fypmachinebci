@@ -5,6 +5,9 @@ import pickle
 app = Flask(__name__)
 model = pickle.load(open('model.pkl', 'rb'))
 
+port = int(os.environ.get('PORT', 5000))
+
+
 @app.route('/')
 def home():
     return "App is running!"
@@ -22,4 +25,4 @@ def check():
     return jsonify(status=200,message='success',prediction_text='Emotions {}'.format(output))
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run(host='0.0.0.0', port=port, debug=True)
