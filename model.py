@@ -4,7 +4,7 @@ import matplotlib.pyplot as plt
 import pandas as pd
 import pickle
 
-dataset = pd.read_csv('C://Users/Somic Tech/Desktop/flask/e.csv')
+dataset = pd.read_csv('./e.csv')
 dataset['Electrode_1'].fillna(0, inplace=True)
 dataset['Electrode_2'].fillna(dataset['Electrode_2'].mean(), inplace=True)
 
@@ -30,8 +30,8 @@ regressor = LinearRegression()
 regressor.fit(X, y)
 
 # Saving model to disk
-pickle.dump(regressor, open('C://Users/Somic Tech/Desktop/flask/model.pkl','wb'))
+pickle.dump(regressor, open('./model.pkl','wb'))
 
 # Loading model to compare the results
-model = pickle.load(open('C://Users/Somic Tech/Desktop/flask/model.pkl','rb'))
+model = pickle.load(open('./model.pkl','rb'))
 print(model.predict([[-31.6, -31.6, 2.57]]))

@@ -14,11 +14,11 @@ from sklearn.metrics import accuracy_score
 import pickle
 
 import os
-for dirname, _, filenames in os.walk('emotions.csv'):
+for dirname, _, filenames in os.walk('./emotions.csv'):
     for filename in filenames:
         print(os.path.join(dirname, filename))
         
-df=pd.read_csv('C://Users/Somic Tech/Desktop/flask/emotions.csv')
+df=pd.read_csv('./emotions.csv')
 df.isnull().sum()
 encode = ({'NEUTRAL': 0, 'POSITIVE': 1, 'NEGATIVE': 2} )
 df_encoded = df.replace(encode)
@@ -61,6 +61,6 @@ expected_classes = np.argmax(y_test,axis=1)
 
 correct = accuracy_score(expected_classes,predict_classes)
 
-pickle.dump(scaler, open('model.pkl','wb'))
-model = pickle.load(open('model.pkl','rb'))
+pickle.dump(scaler, open('./model.pkl','wb'))
+model = pickle.load(open('./model.pkl','rb'))
 
